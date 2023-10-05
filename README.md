@@ -1,2 +1,0 @@
-# Java-Adventures
-Conquering Java
