@@ -18,8 +18,8 @@ public class Cart {
     private BigDecimal totalNetPrice, totalGrossPrice, totalTax;
     private Tax tax;
     private Product[] products;
-
     private Discount discount;
+    private User user;
 
     static {
         System.out.println("shoppingcart.Cart.class uploaded into JVM");
@@ -82,6 +82,7 @@ public class Cart {
     }
 
     public void setId(int id) {
+        if(id<0)return;
         this.id = id;
     }
 
@@ -93,35 +94,24 @@ public class Cart {
         this.userId = userId;
     }
 
-    public int getIndexToAddNewProduct() {
-        return indexToAddNewProduct;
-    }
-
-    public void setIndexToAddNewProduct(int indexToAddNewProduct) {
-        this.indexToAddNewProduct = indexToAddNewProduct;
-    }
-
-    public Tax getTax() {
-        return tax;
-    }
-
-    public void setTax(Tax tax) {
-        this.tax = tax;
-    }
-
     public Product[] getProducts() {
-        return products;
+        return Arrays.copyOf(products,products.length);
     }
 
     public void setProducts(Product[] products) {
         this.products = products;
     }
 
-    public Discount getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", indexToAddNewProduct=" + indexToAddNewProduct +
+                ", totalNetPrice=" + totalNetPrice +
+                ", totalGrossPrice=" + totalGrossPrice +
+                ", totalTax=" + totalTax  +
+                ", products=" + Arrays.toString(products) +
+                '}';
     }
 }
